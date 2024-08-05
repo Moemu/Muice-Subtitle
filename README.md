@@ -5,7 +5,7 @@
 
 （本分支用于协助Muice-Vtuber的开发）  
 
-![Demo](src\example.png)
+![Demo](src/example.png)
 
 # 使用方法
 
