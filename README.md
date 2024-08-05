@@ -5,7 +5,7 @@
 
 （本分支用于协助Muice-Vtuber的开发）  
 
-![Demo](C:\Users\Moemu\AppData\Roaming\Typora\typora-user-images\image-20240805205327115.png)
+![Demo](src\example.png)
 
 # 使用方法
 
