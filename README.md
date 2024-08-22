@@ -15,7 +15,7 @@
 
 # API
 
-请求地址：/api/sendmessage，方法：POST
+请求地址：/api/sendmessage，方法：POST，数据类型：JSON
 
 | 参数    | 说明               |
 | ------- | ------------------ |

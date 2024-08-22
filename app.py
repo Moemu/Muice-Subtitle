@@ -1,5 +1,5 @@
 import logging
-from flask import Flask, send_from_directory, render_template, request, jsonify
+from flask import Flask, send_from_directory, abort, request, jsonify
 from flask_socketio import SocketIO, emit
 from flask_cors import CORS
 
@@ -36,29 +36,19 @@ def favicon():
 
 @socketio.on('message')
 def handle_message(data):
-    avatar = data['avatar']
-    user = data['user']
-    message = data['message']
-    respond = data['respond']
-    emit('message',{'user':user, 'avatar':avatar, 'message':message, 'respond':respond}, broadcast=True)
+    emit('message', data, broadcast=True)
     
 @app.route('/api/sendmessage', methods=['POST'])
 def send_message():
     try:
-        user = request.args.get('user')
-        avatar = request.args.get('avatar')
-        message = request.args.get('message')
-        respond = request.args.get('respond')
-        if user and avatar and respond:
-            socketio.emit('message', {'user':user, 'avatar':avatar, 'message':message, 'respond':respond})
-            logger.info('200 OK')
-            return jsonify({"code": 200, "message": "OK"})
-        else:
-            logger.error('400 Error')
-            return jsonify({"code": 400, "message": "Error"})   
+        data = request.get_json()
+        socketio.emit('message', data)
+        logger.info('200 OK')
+        return jsonify({"code": 200, "message": "OK"}) 
     except:
-        logger.error('400 Error')
-        return jsonify({"code": 400, "message": "Error"})
+        logger.error('400 参数缺失或产生内部错误')
+        abort(400)
+        return jsonify({"code": 400, "message": "参数缺失或产生内部错误"})
     
 if __name__ == '__main__':
     url = f'http://localhost:{port}/index.html'
