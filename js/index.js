@@ -16,7 +16,7 @@ socket.on('message', function(data) {
     avatar = decodeURIComponent(data.avatar)
     message = decodeURIComponent(data.message)
     respond = decodeURIComponent(data.respond)
-    SendTipMessage(user,avatar,message)
+    if(user != '', avatar != '', message != ''){SendTipMessage(user,avatar,message)}
     SendSubtitleMessage(respond)
 });
 
