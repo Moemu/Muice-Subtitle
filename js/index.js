@@ -47,8 +47,14 @@ function ClearSubtitle(){
 }
 
 function PushSubtitleMessage(text_index,text){
+    if(text_index % 30 == 0){
+        Subtitle.innerText = ''
+    }
     Subtitle.innerText += text[text_index]
     text_index++
+    if(text_index % 15 == 0){
+        Subtitle.innerText += '\n'
+    }
     if(text_index < text.length){
         CurrentTimeout = setTimeout(() => {PushSubtitleMessage(text_index,text)},200)
     }else{
