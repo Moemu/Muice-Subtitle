@@ -35,8 +35,29 @@ function SendTipMessage(user,avatarlink,text){
     TipIcon.style.border = '4px'
     TipIcon.style.backgroundImage = "url(" + avatarlink + ")"
     TipIcon.style.backgroundSize = "cover"
-    TipText.innerText = user + ': ' + text
-    setTimeout("TipStatusSwitch(0)", text.length*1000)
+    let output = user + ': ' + text
+    if(output.length > 25){
+        TipText.style.fontSize = '30px'
+        TipText.style.top = '20%'
+        TipText.style.left = '40%'
+    }
+    else if (output.length > 20){
+        TipText.style.fontSize = '35px'
+        TipText.style.top = '18%'
+        TipText.style.left = '45%'
+    }
+    else if (output.length > 15){
+        TipText.style.fontSize = '40px'
+        TipText.style.top = '15%'
+        TipText.style.left = '48%'
+    }
+    else{
+        TipText.style.fontSize = '50px'
+        TipText.style.top = '8%'
+        TipText.style.left = '50%'
+    }
+    TipText.innerText = output
+    // setTimeout("TipStatusSwitch(0)", text.length*200 + 10000)
 }
 
 function ClearSubtitle(){
@@ -47,18 +68,18 @@ function ClearSubtitle(){
 }
 
 function PushSubtitleMessage(text_index,text){
-    if(text_index % 30 == 0){
+    if(text_index % 40 == 0){
         Subtitle.innerText = ''
     }
     Subtitle.innerText += text[text_index]
     text_index++
-    if(text_index % 15 == 0){
+    if(text_index % 20 == 0){
         Subtitle.innerText += '\n'
     }
     if(text_index < text.length){
         CurrentTimeout = setTimeout(() => {PushSubtitleMessage(text_index,text)},200)
     }else{
-        CurrentTimeout = setTimeout(() => {ClearSubtitle()},5000)
+        CurrentTimeout = setTimeout(() => {ClearSubtitle()},10000)
     }
 }
 

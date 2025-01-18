@@ -43,6 +43,7 @@ def send_message():
     try:
         data = request.get_json()
         socketio.emit('message', data)
+        logger.info(f'user: {data["user"]}, message: {data["message"]}, respond: {data["respond"]}')
         logger.info('200 OK')
         return jsonify({"code": 200, "message": "OK"}) 
     except:

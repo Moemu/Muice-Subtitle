@@ -12,7 +12,7 @@ body {
 #tip_aera {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%)translateY(-150px);
+  transform: translate(-50%, -150px);
   top: 5%;
   height: 50px;
   width: 960px;
@@ -45,6 +45,8 @@ body {
   font-family: '小赖字体 SC';
   -webkit-text-stroke: 0.3px rgb(251, 177, 177);
   font-weight: 1000;
+  white-space: nowrap;
+  text-align: center;
 }
 
 #subtitle {
