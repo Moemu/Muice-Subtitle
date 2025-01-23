@@ -36,15 +36,15 @@ body {
 
 #tip_text {
   position: absolute;
-  top: 8%;
-  left: 50%;
+  top: 15%;
+  left: 53%;
   transform: translateX(-50%);
-  width: 600px;
-  font-size: 50px;
-  color: #ffffff;
+  width: 850px;
+  font-size: 40px;
+  color: #F99191;
   font-family: '小赖字体 SC';
-  -webkit-text-stroke: 0.3px rgb(251, 177, 177);
-  font-weight: 1000;
+  /* -webkit-text-stroke: 0.3px rgb(251, 177, 177); */
+  /* font-weight: 1000; */
   white-space: nowrap;
   text-align: center;
 }
@@ -56,8 +56,8 @@ body {
   transform: translateX(-50%);
   font-size: 75px;
   color: #ffffff;
-  font-family: '小赖字体 SC';
-  -webkit-text-stroke: 0.3px rgb(251, 177, 177);
+  font-family: '方正兰亭黑Pro Global Heavy';
+  -webkit-text-stroke: 3px #F99191;
   font-weight: 1000;
   white-space: nowrap;
   text-align: center;
