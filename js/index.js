@@ -7,7 +7,7 @@ let TipStatus = 0
 let SubtitleStatus = 0
 let CurrentTimeout = 0
 
-const server_port = 5500
+const server_port = 8082
 const socket = io.connect(`http://localhost:${server_port}`);
 
 socket.on('message', function(data) {
