@@ -59,6 +59,7 @@ body {
   font-family: '方正兰亭黑Pro Global Heavy';
   -webkit-text-stroke: 3px #F99191;
   font-weight: 1000;
-  white-space: nowrap;
+  white-space: pre-line;
   text-align: center;
+  min-width: 1920px;
 }

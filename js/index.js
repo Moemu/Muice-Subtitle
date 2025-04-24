@@ -17,7 +17,8 @@ socket.on('message', function(data) {
     message = decodeURIComponent(data.message)
     respond = decodeURIComponent(data.respond)
     if(user != '', avatar != '', message != ''){SendTipMessage(user,avatar,message)}
-    SendSubtitleMessage(respond)
+    if(respond != ''){SendSubtitleMessage(respond)}
+    if(respond == ''){CurrentTimeout = setTimeout(() => {ClearAll()},10000)}
 });
 
 function TipStatusSwitch(status){
@@ -61,15 +62,17 @@ function ClearAll(){
 
 function PushSubtitleMessage(text_index,text){
     if(text_index % 40 == 0){
-        Subtitle.innerText = ''
+        Subtitle.textContent = ''
     }
-    Subtitle.innerText += text[text_index]
+    Subtitle.textContent  += text[text_index]
     text_index++
     if(text_index % 20 == 0){
-        Subtitle.innerText += '\n'
+        Subtitle.textContent += '\n'
     }
     if(text_index < text.length){
-        CurrentTimeout = setTimeout(() => {PushSubtitleMessage(text_index,text)},200)
+        const isChineseChar = /[\u4e00-\u9fff]/.test(text[text_index]);
+        const delay = isChineseChar ? 160 : 120;
+        CurrentTimeout = setTimeout(() => {PushSubtitleMessage(text_index,text)}, delay);
     }else{
         CurrentTimeout = setTimeout(() => {ClearAll()},10000)
     }
